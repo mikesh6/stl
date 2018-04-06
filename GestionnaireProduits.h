@@ -9,23 +9,18 @@
 #include "GestionnaireGenerique.h"
 
 
+template <class FoncteurEgal, class InputIterator>
+class GestionnaireProduits : public GestionnaireGenerique <Usager, FoncteurAjouterProduit, multimap<int, Produit*>, FoncteurSupprimerProduit> {
 
-class GestionnaireProduits : public GestionnaireGenerique {
-
-
-
-
+	void reinitialiserClient(); 
+	void reinitialiserFournisseur();
+	void afficher() const;
+	double obtenirTotalAPayer(multimap<int, Produit*> monProduit);
+	double obtenirTotalApayerPremium();
+    Produit* trouverProduitPlusCher();
+	vector<pair<int, Produit*>> obtenirProduitsEntre(double lowerR, double upperR);
+	Produit* obtenirProduitSuivant(Produit* produit);
 };
-// TODO : Créer la classe GestionnaireProduits
 
-// TODO : Méthodes :
-/*
-- reinitialiserClient();
-- reinitialiserFournisseur();
-- afficher();
-- obtenirTotalAPayer();
-- obtenirTotalApayerPremium();
-- trouverProduitPlusCher();
-- obtenirProduitsEntre();
-- obtenirProduitSuivant();
-*/
+
+

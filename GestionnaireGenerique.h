@@ -4,38 +4,50 @@
 * Auteur: Ryan Hardie
 *******************************************/
 
+#include "Foncteur.h"
 #include "Gestionnaire.h"
+#include "map"
+#include <set>
+#include <algorithm>
+
 #pragma once
 
+
+
 template<typename T, typename A, typename C, typename S>
-
 class GestionnaireGenerique {
-
 public:
-	A ajoute();
-	S supprime();
-	Predicate pourChaqueElement();
 
-private:
+	GestionnaireGenerique() {};
+
+	void ajouter(T*t) {
+
+		A funcAdd(conteneur_);
+		conteneur_ = funcAdd(t);
+		//funcAdd(t)
+
+
+	};
+	void supprimer(T*t) {
+
+		S funcDel(conteneur_);
+		conteneur_ = funcDel(t);
+
+	};
+
+	C obtenirContenur() const {
+		return conteneur_;
+	};
+
+	template<typename Predicat>
+	void pourChaqueElement(Predicat predicat) {
+		std::for_each(conteneur_.begin(), conteneur_.end(), predicat);
+	};
+
 
 protected:
-	 Gestionnaire* conteneur_;
 
 
+	C conteneur_;
 
 };
-// TODO : Créer la classe GestionnaireGenerique
-
-// TODO : Méthodes :
-/*
-- ajouter()
-- supprime()
-- obtenirConteneur()
-- pourChaqueElement() //for_each
-*/
-
-template<typename T, typename A, typename C, typename S>
-inline A GestionnaireGenerique<T, A, C, S>::ajoute()
-{
-	return A();
-}

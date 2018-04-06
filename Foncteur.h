@@ -48,10 +48,10 @@ Méthodes :
 - operator(); Incrémenter id_ à chaque appel
 */
 
-class FoncteurGenerateur {
+class FoncteurGenerateurId {
 
 public:
-	FoncteurGenerateur() {
+	FoncteurGenerateurId() {
 		id_ = 0;
 	}
 
@@ -75,12 +75,17 @@ Méthodes :
 class FoncteurDiminuerPourcent {
 
 public:
+
+	double price = 0.0;
+	double percentage = 0.0;
 	FoncteurDiminuerPourcent(int pourcentage) {
 		int pourcentage_ = pourcentage;
 	}
 	// nouveau prix = prix du produit - (prix du produit*pourcentage)
 	void operator()(pair<int, Produit*> pairPourcent) {
-		pairPourcent.second->modifierPrix(pairPourcent.second->obtenirPrix -= pairPourcent.second->obtenirPrix*pourcentage_);
+
+		price = pairPourcent.second->obtenirPrix();
+		pairPourcent.second->modifierPrix( price =  price - (price*pourcentage_));
 	}
 
 private:
@@ -212,9 +217,7 @@ public:
 
 	set<Usager*>& operator()(Usager* usager) {
 
-		set_.insert(usager);
-		return set_;
-
+		set_.erase(usager);//not sure this would work, do we need an iterator here ?
 	};
 
 
