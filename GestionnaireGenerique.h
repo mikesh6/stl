@@ -4,13 +4,11 @@
 * Auteur: Ryan Hardie
 *******************************************/
 
-#include "Foncteur.h"
-#include "Gestionnaire.h"
-#include "map"
-#include <set>
-#include <algorithm>
 
 #pragma once
+
+#include <algorithm>
+
 
 
 
@@ -18,24 +16,24 @@ template<typename T, typename A, typename C, typename S>
 class GestionnaireGenerique {
 public:
 
-	GestionnaireGenerique() {};
+	
 
 	void ajouter(T*t) {
 
 		A add(conteneur_);
-		conteneur_ = add(t);
+		add(t);
 		//funcAdd(t)
 
 
 	};
-	void supprimer(T*t) {
+	//void supprimer(T*t) {
+	//
+		//S del(conteneur_);
+		//del(t);
+	//
+	//};
 
-		S del(conteneur_);
-		del(t);
-
-	};
-
-	C obtenirContenur() const {
+	C obtenirConteneur() const {
 		return conteneur_;
 	};
 

@@ -39,7 +39,10 @@ void ProduitAuxEncheres::modifierPrixInitial(double prixInitial)
 
 void ProduitAuxEncheres::modifierEncherisseur(Client *encherisseur)
 {
-    encherisseur_ = encherisseur;
+	if (encherisseur != nullptr) {
+		encherisseur_ = encherisseur;
+	}
+    
 }
 
 void ProduitAuxEncheres::mettreAJourEnchere(Client *encherisseur, double nouveauPrix)

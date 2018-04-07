@@ -1,12 +1,13 @@
 #include "Fournisseur.h"
 #include "GestionnaireProduits.h"
-#include "Foncteur.h"
+
 #include <iostream>
 
 using namespace std;
 
 Fournisseur::Fournisseur():Usager()
 {
+	catalogue_ = new GestionnaireProduits;
 }
 
 Fournisseur::Fournisseur(const string & nom, const string & prenom, int identifiant, const string & codePostal):
@@ -14,6 +15,12 @@ Fournisseur::Fournisseur(const string & nom, const string & prenom, int identifi
 	
 {
 	catalogue_ = new GestionnaireProduits;
+}
+
+Fournisseur::~Fournisseur()
+{
+
+	delete catalogue_;
 }
 
 GestionnaireProduits * Fournisseur::obtenirCatalogue() const
@@ -34,7 +41,7 @@ void Fournisseur::afficher() const
 {
 
 	Usager::afficher();
-	cout << "\t\tcatalogue:\t" << catalogue_->obtenirContenur().size() << " elements" << endl;
+	cout << "\t\tcatalogue:\t" << catalogue_->obtenirConteneur().size() << " elements" << endl;
 
 }
 
@@ -52,7 +59,7 @@ void Fournisseur::ajouterProduit(Produit * produit)
 void Fournisseur::enleverProduit(Produit * produit)
 {
 
-	catalogue_->supprimer(produit);
+//	catalogue_->supprimer(produit);
 }
 
 Produit * Fournisseur::trouverProduitPlusCher() const

@@ -16,7 +16,6 @@ class GestionnaireUsagers : public GestionnaireGenerique <Usager,FoncteurAjouter
 
 public:
 
-	GestionnaireUsagers();
 	double obtenirChiffreAffaires() const;
 	void encherir(Client *client, ProduitAuxEncheres *produit, double montant) const;
 	void reinitialiser();

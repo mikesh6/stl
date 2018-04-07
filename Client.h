@@ -2,21 +2,18 @@
 #define CLIENT_H
 
 #include <string>
-#include <vector>
-#include "usager.h"
-
+#include "Usager.h"
+#include "GestionnaireProduits.h"
 using namespace std;
 
 
-class Produit;
-class GestionnaireProduits;
-class Foncteur;
 
 class Client : public Usager
 {
   public:
     Client(unsigned int codeClient = 0);
     Client(const string &nom, const string &prenom, int identifiant, const string &codePostal, unsigned int codeClient = 0);
+	~Client();
 
     unsigned int obtenirCodeClient() const;
 	void modifierCodeClient(unsigned int codeClient);

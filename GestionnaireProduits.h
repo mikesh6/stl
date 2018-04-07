@@ -19,16 +19,17 @@ public:
 
 
 	GestionnaireProduits();
+	~GestionnaireProduits();
 
 
 	void reinitialiserClient(); 
 	void reinitialiserFournisseur();
 	void afficher() const;
-	double obtenirTotalAPayer(multimap<int, Produit*> monProduit);
+	double obtenirTotalAPayer();
 	double obtenirTotalApayerPremium();
-    Produit* trouverProduitPlusCher();
-	vector<pair<int, Produit*>> obtenirProduitsEntre(double lowerR, double upperR);
-	Produit* obtenirProduitSuivant(Produit* produit);
+    //Produit* trouverProduitPlusCher();
+	//vector<pair<int, Produit*>> obtenirProduitsEntre(double lowerR, double upperR);
+	//Produit* obtenirProduitSuivant(Produit* produit);
 };
 
 

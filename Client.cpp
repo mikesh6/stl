@@ -11,14 +11,20 @@ Client::Client(unsigned int codeClient)
       codeClient_(codeClient)
 {
 	// TODO : À modifier
+	panier_ = new GestionnaireProduits;
 }
 
 Client::Client(const string & nom, const string & prenom, int identifiant, const string & codePostal, unsigned int codeClient)
 	:Usager(nom,prenom,identifiant,codePostal), 
-	codeClient_(codeClient)
+	codeClient_(codeClient), panier_(nullptr)
 {
 	panier_ = new GestionnaireProduits;
 
+}
+
+Client::~Client()
+{
+	delete panier_;
 }
 
 
@@ -40,7 +46,7 @@ double Client::obtenirTotalAPayer() const
 {
 	return 0.0;
 	//this is still missing 
-	//return panier_->obtenirTotalAPayer();
+	return panier_->obtenirTotalAPayer();
 }
 
 
@@ -58,7 +64,7 @@ void Client::afficher() const
 	// TODO : À modifier
     Usager::afficher();
     cout << "\t\tcode client:\t" << codeClient_ << endl
-         << "\t\tpanier:\t\t" << panier_->obtenirContenur().size() << " elements" << endl;
+         << "\t\tpanier:\t\t" << panier_->obtenirConteneur().size() << " elements" << endl;
 }
 
 void Client::modifierCodeClient(unsigned int codeClient)
@@ -71,7 +77,7 @@ void Client::enleverProduit(Produit *produit)
 	// TODO : À modifier
 	// is it overriding my code ?? 
 
-	panier_->supprimer(produit);
+	//panier_->supprimer(produit);
 
 
     
@@ -92,5 +98,6 @@ void Client::reinitialiser()
 
 Produit * Client::trouverProduitPlusCher() const
 {
-	return panier_->trouverProduitPlusCher();
+	//return panier_->trouverProduitPlusCher();
+	return nullptr;
 }

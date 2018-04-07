@@ -5,15 +5,11 @@
 *******************************************/
 
 #pragma once
-#include <vector>
-#include <algorithm>
-#include <iostream> 
-#include <iterator>
-#include "Produit.h"
-#include "Usager.h"
-#include <map>
-#include <set>
 
+#include <algorithm>  
+#include <set>
+#include <map>
+#include "Usager.h"
 using namespace std;
 
 
@@ -160,6 +156,7 @@ Méthodes :
 				sinon on retourne juste la multimap_ sans supprimer l'élément.
 */
 
+
 class FoncteurSupprimerProduit {
 
 public:
@@ -168,12 +165,12 @@ public:
 	multimap<int, Produit*>& operator()(Produit* p) {
 
 		//iterateur pointe vers l'objet trouvé que l'on souhaite supprimer
-		InputIterator produitASupprimer=  find_if(multimap_.begin(), multimap_.end(), FoncteurEgal(p));
-		
+		InputIterator produitASupprimer = find_if(multimap_.begin(), multimap_.end(), FoncteurEgal(p));
+
 		//verifier if produitASupprimer = nullptr (si le produit est parmi la liste donc s'il existe)
 		multimap_.erase(produitASupprimer);
 		return multimap_;
-		
+
 	};
 
 
@@ -192,13 +189,12 @@ Méthodes :
 class FoncteurAjouterUsager {
 
 public:
-	FoncteurAjouterUsager(set<Usager*> setUsager) : set_(setUsager) {
-	};
+	FoncteurAjouterUsager(set<Usager*>& setUsager) : set_(setUsager) {};
 
-	set<Usager*>& operator()(Usager* usager) {
+	void operator()(Usager* usager) {
 
 		set_.insert(usager);
-		return set_;
+		
 
 	};
 

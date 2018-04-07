@@ -3,13 +3,10 @@
 * Date: 9 mars 2018
 * Auteur: Ryan Hardie
 *******************************************/
-
+#include "ProduitAuxEncheres.h"
 #include "GestionnaireUsagers.h"
 
-GestionnaireUsagers::GestionnaireUsagers()
-{
 
-}
 
 double GestionnaireUsagers::obtenirChiffreAffaires() const
 {
@@ -29,7 +26,7 @@ void GestionnaireUsagers::reinitialiser()
 {
 	for (auto i : conteneur_) {
 
-		i->Usager::reinitialiser();
+		i->reinitialiser();
 
 	}
 }

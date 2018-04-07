@@ -13,6 +13,10 @@ GestionnaireProduits::GestionnaireProduits()
 {
 }
 
+GestionnaireProduits::~GestionnaireProduits()
+{
+}
+
 void GestionnaireProduits::reinitialiserClient()
 {
 
@@ -48,7 +52,7 @@ void GestionnaireProduits::afficher() const
 
 }
 
-double GestionnaireProduits::obtenirTotalAPayer(multimap<int, Produit*> monProduit)
+double GestionnaireProduits::obtenirTotalAPayer()
 {
 	double total = 0.0;
 	for (auto i : conteneur_)
@@ -71,6 +75,7 @@ double GestionnaireProduits::obtenirTotalApayerPremium()
 	return total;
 }
 
+/*
 Produit * GestionnaireProduits::trouverProduitPlusCher()
 {
 	auto ProduitPlusCher = max_element(conteneur_.begin(), conteneur_.end(),
@@ -80,7 +85,9 @@ Produit * GestionnaireProduits::trouverProduitPlusCher()
 	});
 	return ProduitPlusCher->second;
 }
+*/
 
+/*
 vector<pair<int, Produit*>> GestionnaireProduits::obtenirProduitsEntre(double lowerR, double upperR)
 {
 	//vector<pair<int, Produit*> > vec;
@@ -88,8 +95,10 @@ vector<pair<int, Produit*>> GestionnaireProduits::obtenirProduitsEntre(double lo
 	//return vector<pair<int, Produit*>>;
 }
 
+
 Produit * GestionnaireProduits::obtenirProduitSuivant(Produit * produit)
 {
 	//auto it = find_if(conteneur_.begin(), conteneur_.end(), bind(greater<pair<int, Produit*> >(), placeholders::_1, pair<int, Produit*>(prod->obtenirPrix(), prod)));
 	//return it->second;
 }
+*/
