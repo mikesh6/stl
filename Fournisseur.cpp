@@ -1,74 +1,58 @@
 #include "Fournisseur.h"
+#include "GestionnaireProduits.h"
+#include "Foncteur.h"
 #include <iostream>
 
-Fournisseur::Fournisseur()
-    : Usager()
+using namespace std;
+
+Fournisseur::Fournisseur():Usager()
 {
 }
 
-Fournisseur::Fournisseur(const string &nom, const string &prenom, int identifiant,
-                         const string &codePostal)
-    : Usager(nom, prenom, identifiant, codePostal)
+Fournisseur::Fournisseur(const string & nom, const string & prenom, int identifiant, const string & codePostal):
+	Usager(nom, prenom, identifiant, codePostal)
+	
 {
-	// TODO : À modifier
+	catalogue_ = new GestionnaireProduits;
 }
 
-vector<Produit *> Fournisseur::obtenirCatalogue() const
+GestionnaireProduits * Fournisseur::obtenirCatalogue() const
 {
-	// TODO : À modifier
-    return catalogue_;
+	return catalogue_;
 }
 
 void Fournisseur::afficherCatalogue() const
 {
-	// TODO : À modifier
-    cout << "CATALOGUE (de " << obtenirNom() << ")"
-         << "\n";
-    for (unsigned int i = 0; i < catalogue_.size(); i++)
-        catalogue_[i]->afficher();
-    cout << endl;
+	cout << "CATALOGUE (de " << obtenirNom() << ")"
+		<< "\n";
+
+	catalogue_->afficher();
+	cout << endl;
 }
 
 void Fournisseur::afficher() const
 {
-	// TODO : À modifier
-    Usager::afficher();
-    cout << "\t\tcatalogue:\t" << catalogue_.size() << " elements" << endl;
+
+	Usager::afficher();
+	cout << "\t\tcatalogue:\t" << catalogue_->obtenirContenur().size() << " elements" << endl;
+
 }
 
 void Fournisseur::reinitialiser()
 {
-	// TODO : À modifier
-    for (unsigned int i = 0; i < catalogue_.size(); i++)
-        catalogue_[i]->modifierFournisseur(nullptr);
-    catalogue_.clear();
+
+	catalogue_->reinitialiserFournisseur();
 }
 
-void Fournisseur::ajouterProduit(Produit *produit)
+void Fournisseur::ajouterProduit(Produit * produit)
 {
-	// TODO : À modifier
-    for (unsigned int i = 0; i < catalogue_.size(); i++)
-        if (catalogue_[i] == produit)
-            return;
-    Fournisseur *fournisseur = produit->obtenirFournisseur();
-    if (fournisseur != nullptr && fournisseur != this)
-        fournisseur->enleverProduit(produit);
-    catalogue_.push_back(produit);
+	catalogue_->ajouter(produit);
 }
 
-void Fournisseur::enleverProduit(Produit *produit)
+void Fournisseur::enleverProduit(Produit * produit)
 {
-	// TODO : À modifier
-    produit->modifierFournisseur(nullptr);
-    for (unsigned int i = 0; i < catalogue_.size(); i++)
-    {
-        if (catalogue_[i] == produit)
-        {
-            catalogue_[i] = catalogue_[catalogue_.size() - 1];
-            catalogue_.pop_back();
-            return;
-        }
-    }
+
+	catalogue_->supprimer(produit);
 }
 
 Produit * Fournisseur::trouverProduitPlusCher() const
@@ -78,5 +62,6 @@ Produit * Fournisseur::trouverProduitPlusCher() const
 
 void Fournisseur::DiminuerPrix(int pourcent) const
 {
-
+	FoncteurDiminuerPourcent predicat(pourcent);
+	catalogue_->pourChaqueElement(predicat);
 }

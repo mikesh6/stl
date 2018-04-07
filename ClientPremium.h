@@ -4,6 +4,8 @@
 #include <string>
 #include "Client.h"
 
+class Foncteur;
+
 using namespace std;
 
 class ClientPremium : public Client

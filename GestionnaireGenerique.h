@@ -22,16 +22,16 @@ public:
 
 	void ajouter(T*t) {
 
-		A funcAdd(conteneur_);
-		conteneur_ = funcAdd(t);
+		A add(conteneur_);
+		conteneur_ = add(t);
 		//funcAdd(t)
 
 
 	};
 	void supprimer(T*t) {
 
-		S funcDel(conteneur_);
-		conteneur_ = funcDel(t);
+		S del(conteneur_);
+		del(t);
 
 	};
 
@@ -41,7 +41,7 @@ public:
 
 	template<typename Predicat>
 	void pourChaqueElement(Predicat predicat) {
-		std::for_each(conteneur_.begin(), conteneur_.end(), predicat);
+		for_each(conteneur_.begin(), conteneur_.end(), predicat);
 	};
 
 

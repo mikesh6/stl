@@ -6,19 +6,35 @@
 
 #include "GestionnaireUsagers.h"
 
-double GestionnaireUsager::obtenirChiffreAffaires() const
+GestionnaireUsagers::GestionnaireUsagers()
 {
-	return 0.0;
+
 }
 
-void GestionnaireUsager::encherir(Client * client, ProduitAuxEncheres * produit, double montant) const
+double GestionnaireUsagers::obtenirChiffreAffaires() const
 {
+	double chiffreAffaires = 0.0;
+	for (auto i : conteneur_)
+		chiffreAffaires += i->obtenirTotalAPayer();
+	return chiffreAffaires;
 }
 
-void GestionnaireUsager::reinitialiser()
+void GestionnaireUsagers::encherir(Client * client, ProduitAuxEncheres * produit, double montant) const
 {
+	if (produit->obtenirPrix() < montant)
+		produit->mettreAJourEnchere(client, montant);
 }
 
-void GestionnaireUsager::afficherProfils() const
+void GestionnaireUsagers::reinitialiser()
 {
+	for (auto i : conteneur_) {
+
+		i->Usager::reinitialiser();
+
+	}
+}
+
+void GestionnaireUsagers::afficherProfils() const
+{
+	//not completed yet
 }

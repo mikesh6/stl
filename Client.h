@@ -3,10 +3,14 @@
 
 #include <string>
 #include <vector>
-#include "Usager.h"
-#include "Produit.h"
-#include "GestionnaireProduits.h"
+#include "usager.h"
+
 using namespace std;
+
+
+class Produit;
+class GestionnaireProduits;
+class Foncteur;
 
 class Client : public Usager
 {
@@ -17,7 +21,7 @@ class Client : public Usager
     unsigned int obtenirCodeClient() const;
 	void modifierCodeClient(unsigned int codeClient);
 	
-    vector<Produit *> obtenirPanier() const;
+	GestionnaireProduits*  obtenirPanier() const;
     virtual double obtenirTotalAPayer() const;
     void afficherPanier() const;
     virtual void afficher() const;

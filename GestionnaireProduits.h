@@ -3,14 +3,23 @@
 * Date: 9 mars 2018
 * Auteur: Ryan Hardie
 *******************************************/
-
+#ifndef GESTIONNAIREPRODUITS_H
+#define GESTIONNAIREPRODUITS_H
 #pragma once
 
 #include "GestionnaireGenerique.h"
+#include "Produit.h"
+#include "Foncteur.h"
+#include <map>
+#include <functional> //for the bind stl
+
+class GestionnaireProduits : public GestionnaireGenerique <Produit, FoncteurAjouterProduit, multimap<int, Produit*>, FoncteurSupprimerProduit> {
+
+public:
 
 
-template <class FoncteurEgal, class InputIterator>
-class GestionnaireProduits : public GestionnaireGenerique <Usager, FoncteurAjouterProduit, multimap<int, Produit*>, FoncteurSupprimerProduit> {
+	GestionnaireProduits();
+
 
 	void reinitialiserClient(); 
 	void reinitialiserFournisseur();
@@ -23,4 +32,6 @@ class GestionnaireProduits : public GestionnaireGenerique <Usager, FoncteurAjout
 };
 
 
+
+#endif 
 

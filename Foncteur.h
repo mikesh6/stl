@@ -55,8 +55,8 @@ public:
 		id_ = 0;
 	}
 
-	void operator()() {
-		id_++;
+	int operator()() {
+		return id_++;
 	}
 	
 private:
@@ -159,12 +159,12 @@ Méthodes :
 				on supprime le Produit et on retourne la multimap_,
 				sinon on retourne juste la multimap_ sans supprimer l'élément.
 */
-template <class FoncteurEgal, class InputIterator>
+
 class FoncteurSupprimerProduit {
 
 public:
 	FoncteurSupprimerProduit(multimap<int, Produit*>& mapProduit) : multimap_(mapProduit) {};
-
+	template <class FoncteurEgal, class InputIterator>
 	multimap<int, Produit*>& operator()(Produit* p) {
 
 		//iterateur pointe vers l'objet trouvé que l'on souhaite supprimer

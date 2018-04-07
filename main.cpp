@@ -16,21 +16,22 @@ using namespace std;
 
 int main()
 {
-	FoncteurGenerateurId genIdUsager, genIdProduit;
-    GestionnaireUsagers poly;
-    Client ratus;
-	ratus.modifierReference(genIdUsager());
-    Client gaspard("Donada--Vidal", "Gaspard", genIdUsager(), "P4R 1I5", 1997);
-    Client rick("S", "Rick", genIdUsager(), "HF1 8H3", 20012003);
-    ClientPremium marou;
+	FoncteurGenerateurId genIdUsager, genIdProduit; //function pointers
+    GestionnaireUsagers poly; //object poly, how does it construct it ? 
+    Client ratus; //object client, we have constructors
+	ratus.modifierReference(genIdUsager()); //changed to int instead of void
+    Client gaspard("Donada--Vidal", "Gaspard", genIdUsager(), "P4R 1I5", 1997);//need to call the UsagerConstructor, and client constructor
+	Client rick("S", "Rick", genIdUsager(), "HF1 8H3", 20012003);//Same porblem
+    ClientPremium marou;// need to add foncteur
 	marou.modifierReference(genIdUsager());
-    ClientPremium julie("Cash", "Julie", genIdUsager(), "HZ9 1J4", 19141918, 50);
-    Fournisseur mina;
-	mina.modifierReference(genIdUsager());
-    Fournisseur martine("Bellaiche", "Martine", genIdUsager(), "H4C 8D4");
-    Fournisseur samuel("Kadoury", "Samuel", genIdUsager(), "H1G 2G4");
-    Produit sel;
-	sel.modifierReference(genIdProduit());
+    ClientPremium julie("Cash", "Julie", genIdUsager(), "HZ9 1J4", 19141918, 50);//here we called the genIdUsager
+	template <class FoncteurEgal, class InputIterator>
+	Fournisseur mina; 
+	mina.modifierReference(genIdUsager());//it doesnt even construct
+    Fournisseur martine("Bellaiche", "Martine", genIdUsager(), "H4C 8D4");//critical error in fournisseur
+    Fournisseur samuel("Kadoury", "Samuel", genIdUsager(), "H1G 2G4");//critical error in fournisseur
+    Produit sel;//this works
+	sel.modifierReference(genIdProduit());//this should work 
     Produit chaussures(&martine, "chaussures", genIdProduit(), 40.0);
     Produit stylo(&samuel, "stylo", genIdProduit(), 3.0);
     ProduitAuxEncheres sculpture;

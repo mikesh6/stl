@@ -8,8 +8,8 @@ vector<Usager *> Gestionnaire::obtenirUsagers() const
 void Gestionnaire::afficherLesProfils() const
 {
     cout << "PROFILS" << endl;
-    for (unsigned int i = 0; i < usagers_.size(); i++)
-        usagers_[i]->afficherProfil();
+	for (unsigned int i = 0; i < usagers_.size(); i++)
+		usagers_[i]->afficher();
     cout << endl;
 }
 

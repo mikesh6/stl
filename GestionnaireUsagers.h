@@ -12,10 +12,11 @@
 //typename set with or without
 
 
-class GestionnaireUsager : public GestionnaireGenerique <Usager,FoncteurAjouterUsager,set<Usager*>, FoncteurSupprimerUsager> {
+class GestionnaireUsagers : public GestionnaireGenerique <Usager,FoncteurAjouterUsager,set<Usager*>, FoncteurSupprimerUsager> {
 
 public:
 
+	GestionnaireUsagers();
 	double obtenirChiffreAffaires() const;
 	void encherir(Client *client, ProduitAuxEncheres *produit, double montant) const;
 	void reinitialiser();
